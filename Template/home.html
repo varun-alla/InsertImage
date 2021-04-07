@@ -1,0 +1,46 @@
+<title>Image Input form</title>
+        	 	<link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        	 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+<h2>Image Database Web Form</h2>
+<form action="" method="post" role="form">
+    {{ form.csrf }}
+
+<label for="url">image url:</label>
+<input type="text" class="form-control" id="url" name="url" placeholder="image url">
+
+<label for="price">Price:</label>
+<input type="number" step=0.1 class="form-control" id="price" name="price" placeholder="Enter rating">
+
+
+<label for="rating">rating:</label>
+<input type="number" step=0.01 class="form-control" id="rating" name="rating" placeholder="Enter rating">
+
+<label for="Name">Name:</label>
+<input type="text" class="form-control" id="name" name="name" placeholder="Enter rating">
+
+</div>
+<button type="submit" class="btn btn-success">Submit</button>
+</form>{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+
+{% for message in messages %}
+{% if "Error" not in message[1]: %}
+<div class="alert alert-info">
+                <strong>Success! </strong> {{ message[1] }}</div>
+{% endif %}
+
+{% if "Error" in message[1]: %}
+
+
+<div class="alert alert-warning">
+    {{ message[1] }}
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+</div>
+
