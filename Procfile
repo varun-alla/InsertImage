@@ -1,1 +1,1 @@
-web: gunicorn app:flaskdbcon
+web: gunicorn app: flaskdbcon
