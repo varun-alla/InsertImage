@@ -11,7 +11,7 @@ class ReusableForm(Form):
     rating = FloatField('rating:', validators=[validators.required(), validators.number_range(0,5)])
     price = FloatField('rating:', validators=[validators.required(), validators.number_range(0.99)])
     name = StringField('name:', validators=[validators.required(), validators.Length(min=4, max=75)])
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/")
 def hello() :
     form = ReusableForm(request.form)
             #my_id = request.form['my_id']
@@ -55,4 +55,5 @@ def hello() :
         return render_template('home.html', form=form)
     flash('Input succesfull for item ' + name)
     return render_template('home.html', form=form)
+#if(__name__=='__main__'):
 #    app.run(debug=True)
