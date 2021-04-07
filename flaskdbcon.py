@@ -56,5 +56,3 @@ def hello() :
         return render_template('home.html', form=form)
     flash('Input succesfull for item ' + name)
     return render_template('home.html', form=form)
-if(__name__=='__main__'):
-    app.run()
