@@ -2,11 +2,8 @@ from flask import Flask, render_template, flash, request,Markup
 from wtforms import Form,validators, StringField, SubmitField,FloatField
 import kaka
 # App config.
-DEBUG = True
 app = Flask(__name__,template_folder='Template')
-#app.config.from_object(__name__)
-#app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
-
+app.secret_key=b'_5#y2L"F4Q8z\n\xec]/'
 
 class ReusableForm(Form):
     #my_id = StringField('id:', validators=[validators.required(),validators.length(min=5)])
@@ -17,14 +14,16 @@ class ReusableForm(Form):
 @app.route("/", methods=['GET', 'POST'])
 def hello() :
     form = ReusableForm(request.form)
-    if request.method == 'POST':
             #my_id = request.form['my_id']
+    try:
         rating = request.form['rating']
         url = request.form['url']
         price = request.form['price']
         name = request.form['name']
         #print(" ", url, " ", price, " ", rating, " ", name)
         #print('bababa')
+    except Exception as e:
+        return render_template("home.html",form=form)
     if form.validate():
             # Save the comment here.
         #print(form.validate())
@@ -56,3 +55,4 @@ def hello() :
         return render_template('home.html', form=form)
     flash('Input succesfull for item ' + name)
     return render_template('home.html', form=form)
+#    app.run(debug=True)
