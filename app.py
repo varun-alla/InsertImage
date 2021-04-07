@@ -52,8 +52,9 @@ def hello() :
     stk = kaka.hello_world(request.form)
     if(stk['return']=='error'):
         flash('Error '+stk['msg'])
+        request.form
         return render_template('home.html', form=form)
     flash('Input succesfull for item ' + name)
     return render_template('home.html', form=form)
-#if(__name__=='__main__'):
-#    app.run(debug=True)
+if(__name__=='__main__'):
+    app.run(debug=True)

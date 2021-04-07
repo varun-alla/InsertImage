@@ -9,7 +9,7 @@
 
 <label for="url">image url:</label>
 <input type="text" class="form-control" id="url" name="url" placeholder="image url">
-
+    <h4>RIGHT CLICK CHESI IMAGE URL COPY CHEYANDI</h4>>
 <label for="price">Price:</label>
 <input type="number" step=0.1 class="form-control" id="price" name="price" placeholder="Enter rating">
 
@@ -19,16 +19,17 @@
 
 <label for="Name">Name:</label>
 <input type="text" class="form-control" id="name" name="name" placeholder="Enter rating">
-
-</div>
+    <br>
 <button type="submit" class="btn btn-success">Submit</button>
 </form>{% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
-
+</div>
 {% for message in messages %}
 {% if "Error" not in message[1]: %}
 <div class="alert alert-info">
-                <strong>Success! </strong> {{ message[1] }}</div>
+                <strong>Success! </strong> {{ message[1] }}
+{form.reset()}</div>
+{form.reset()}
 {% endif %}
 
 {% if "Error" in message[1]: %}
@@ -36,6 +37,7 @@
 
 <div class="alert alert-warning">
     {{ message[1] }}
+    {form.reset()}
 </div>
 {% endif %}
 {% endfor %}
@@ -44,3 +46,8 @@
 
 </div>
 
+<script>
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>
