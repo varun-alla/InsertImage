@@ -2,7 +2,7 @@ from flask import Flask, render_template, flash, request,Markup
 from wtforms import Form,validators, StringField, SubmitField,FloatField
 import kaka
 # App config.
-DEBUG = False
+DEBUG = True
 app = Flask(__name__,template_folder='Template')
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
