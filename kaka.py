@@ -15,7 +15,7 @@ def hello_world(request):
     values = values + add_quotation(str(request['name']))
     ret = ""
     try:
-        print('INSERT INTO items(image,price,rating,title) VALUES(' + values + ') returning id')
+        #print('INSERT INTO items(image,price,rating,title) VALUES(' + values + ') returning id')
         cur.execute(
             'INSERT INTO items(image,price,rating,title) VALUES(' + values + ') returning title;')
         # ("hello")
