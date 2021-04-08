@@ -1,5 +1,6 @@
 import psycopg2
 from cred import la as cred
+import firebase
 def add_quotation(input_string):
     return "\'" + input_string + "\'"
 
@@ -17,7 +18,7 @@ def hello_world(request):
     try:
         #print('INSERT INTO items(image,price,rating,title) VALUES(' + values + ') returning id')
         cur.execute(
-            'INSERT INTO items(image,price,rating,title) VALUES(' + values + ') returning title;')
+            'INSERT INTO items(image,price,rating,title) VALUES(' + values + ') returning id;')
         # ("hello")
     except psycopg2.Error as e:
         # get error code
@@ -31,10 +32,17 @@ def hello_world(request):
             # ("processing")
             if db_version is None:
                 break
-            ret += db_version[0]
+            ret = db_version[0]
         con.commit()
         cur.close()
         con.close()
+        data = dict()
+        data['id'] = str(100000 + ret)
+        data['image'] = request['url']  # "https://image.shutterstock.com/image-photo/bangsar-malaysia-january-30th-2020-260nw-1630199971.jpg"
+        data['price'] = request['price']
+        data['rating'] = request['rating']
+        data['title'] = request['name']
+        firebase.kaka(data)
         return {"return": ret}
     else:
         con.rollback()

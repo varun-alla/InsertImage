@@ -1,6 +1,7 @@
 from flask import Flask, render_template, flash, request,Markup
 from wtforms import Form,validators, StringField, SubmitField,FloatField
 import kaka
+import firebase
 # App config.
 app = Flask(__name__,template_folder='Template')
 app.secret_key=b'_5#y2L"F4Q8z\n\xec]/'
@@ -56,5 +57,6 @@ def hello() :
         return render_template('home.html', form=form)
     flash('Input succesfull for item ' + name)
     return render_template('home.html', form=form)
-if(__name__=='__main__'):
-    app.run(debug=True)
+
+#if(__name__=='__main__'):
+#    app.run(debug=True)
