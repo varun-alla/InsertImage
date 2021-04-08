@@ -39,8 +39,8 @@ def hello_world(request):
         data = dict()
         data['id'] = str(100000 + ret)
         data['image'] = request['url']  # "https://image.shutterstock.com/image-photo/bangsar-malaysia-january-30th-2020-260nw-1630199971.jpg"
-        data['price'] = request['price']
-        data['rating'] = request['rating']
+        data['price'] = int(request['price'])
+        data['rating'] = int(request['rating'])
         data['title'] = request['name']
         firebase.kaka(data)
         return {"return": ret}
